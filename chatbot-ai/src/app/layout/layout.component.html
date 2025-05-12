@@ -1,0 +1,69 @@
+<div class="layout-container" [class.sidebar-collapsed]="isSidebarCollapsed">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2 class="app-title">My App</h2>
+        <button class="toggle-btn mobile-only" (click)="toggleSidebar()">
+          <i class="fa" [ngClass]="isSidebarCollapsed ? 'fa-bars' : 'fa-times'"></i>
+        </button>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a routerLink="/dashboard" routerLinkActive="active">
+              <i class="fa fa-home"></i>
+              <span class="nav-text">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/chat" routerLinkActive="active">
+              <i class="fa fa-comments"></i>
+              <span class="nav-text">Chat</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/profile" routerLinkActive="active">
+              <i class="fa fa-user"></i>
+              <span class="nav-text">Profile</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/settings" routerLinkActive="active">
+              <i class="fa fa-cog"></i>
+              <span class="nav-text">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <a href="#" class="logout-btn">
+          <i class="fa fa-sign-out"></i>
+          <span class="nav-text">Logout</span>
+        </a>
+      </div>
+    </aside>
+  
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!--<header class="main-header">
+        <button class="toggle-btn desktop-only" (click)="toggleSidebar()">
+          <i class="fa" [ngClass]="isSidebarCollapsed ? 'fa-bars' : 'fa-times'"></i>
+        </button>
+        <h1 class="page-title">{{ title }}</h1>
+        <div class="header-actions">
+          <button class="action-btn">
+            <i class="fa fa-bell"></i>
+          </button>
+          <button class="action-btn user-menu">
+            <i class="fa fa-user-circle"></i>
+          </button>
+        </div>
+      </header>-->
+      
+      <div class="content-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>

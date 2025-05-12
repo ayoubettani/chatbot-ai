@@ -1,0 +1,217 @@
+:host {
+    display: block;
+    height: 100vh;
+    /* Ensures the component takes full viewport height */
+  }
+  
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #e5e5e5;
+    /* Slightly textured background */
+  }
+  
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Fill the :host height */
+    max-width: 800px;
+    /* Max width for larger screens */
+    margin: 0 auto;
+    /* Center the container */
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    /* Clip children to rounded corners */
+  }
+  
+  .chat-header {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    /* Lighter header background */
+    border-bottom: 1px solid #dee2e6;
+    text-align: center;
+    font-weight: 600;
+    color: #495057;
+    flex-shrink: 0;
+    /* Prevent header from shrinking */
+  }
+  
+  .chat-header h4 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+  
+  .chat-history {
+    flex-grow: 1;
+    overflow-y: auto;
+    /* Use auto for scrollbars */
+    padding: 20px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Wrapper for alignment */
+  .message-wrapper {
+    display: flex;
+    margin-bottom: 15px;
+    max-width: 85%;
+    /* Prevent messages from taking full width */
+  }
+  
+  .message-user {
+    align-self: flex-end;
+    /* Align user messages to the right */
+    flex-direction: row-reverse;
+    /* Put icon after bubble */
+  }
+  
+  .message-bot {
+    align-self: flex-start;
+    /* Align bot messages to the left */
+    flex-direction: row;
+  }
+  
+  .message-content {
+      display: flex;
+      align-items: flex-end; /* Align icon bottom with text */
+  }
+  
+  
+  .message-icon {
+    font-size: 1.5rem;
+    /* Slightly larger icon */
+    color: #adb5bd;
+    /* Neutral icon color */
+    flex-shrink: 0;
+    /* Prevent icon from shrinking */
+    margin-bottom: 5px; /* Align better with bubble */
+  }
+  
+  .message-user .message-icon {
+    margin-left: 10px;
+    color: #007bff; /* User icon color */
+  }
+  
+  .message-bot .message-icon {
+    margin-right: 10px;
+    color: #6c757d; /* Bot icon color */
+  }
+  
+  /* The message bubble */
+  .responses {
+    padding: 10px 15px;
+    border-radius: 18px;
+    /* More rounded bubbles */
+    line-height: 1.5;
+    font-size: 0.95rem;
+    word-wrap: break-word;
+    /* Ensure long words break */
+     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  
+  /* User message bubble styling */
+  .message-user .responses {
+    background-color: #007bff;
+    color: white;
+    border-bottom-right-radius: 5px;
+    /* Slightly flatten corner */
+  }
+  
+  /* Bot message bubble styling */
+  .message-bot .responses {
+    background-color: #f1f3f5;
+    /* Light grey for bot */
+    color: #343a40;
+    border-bottom-left-radius: 5px;
+    /* Slightly flatten corner */
+  }
+  
+  /* Input area styling */
+  .chat-input-area {
+    display: flex;
+    padding: 15px 20px;
+    border-top: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    flex-shrink: 0;
+    /* Prevent footer from shrinking */
+    gap: 10px; /* Space between input and button */
+  }
+  
+  #message-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 20px;
+    /* Pill shape */
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  #message-input:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  #message-input:disabled {
+      background-color: #e9ecef;
+      cursor: not-allowed;
+  }
+  
+  
+  #send-button {
+    padding: 0 15px; /* Adjust padding for icon button */
+    height: 40px; /* Match input height */
+    width: 45px; /* Square-ish button */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Circle button */
+    cursor: pointer;
+    font-size: 1.1rem; /* Icon size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+  }
+  
+  #send-button:hover:not(:disabled) {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+  }
+  
+  #send-button:disabled {
+    background-color: #adb5bd;
+    /* Greyed out when disabled */
+    cursor: not-allowed;
+  }
+  
+  /* Custom Scrollbar (Optional, Webkit browsers) */
+  .chat-history::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .chat-history::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+  }
+  
+  .chat-history::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 10px;
+  }
+  
+  .chat-history::-webkit-scrollbar-thumb:hover {
+    background: #aaaaaa;
+  }
+  
+  /* Ensure skeleton aligns correctly if its height differs */
+  app-skeleton {
+      display: block; /* Make it block level */
+      min-height: 40px; /* Example: Give it a minimum height */
+  }
